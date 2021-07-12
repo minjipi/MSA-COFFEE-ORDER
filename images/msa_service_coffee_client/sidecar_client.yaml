@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sidecar-client
+spec:
+  containers:      
+  - name: client-server
+    image: ghdalswl77/msa-service-coffee-client:1.0
+    env:
+    - name: EUREKA_SERVER_IP
+      value: svc-eureka-server
+    volumeMounts:
+    - mountPath: /usr/local/tomcat/webapps/client
+      name: client-vol
+      
+  - name: client-puller
+    image: ghdalswl77/msa-service-coffee-client-puller
+    env:
+    - name: CONTENTS_SOURCE_URL
+      value: "https://github.com/minjipi/web-front-client"
+    volumeMounts:
+    - mountPath: /data
+      name: client-vol
+      
+  volumes:           
+  - name: client-vol
+    emptyDir: {}

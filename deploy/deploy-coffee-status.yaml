@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-coffee-status
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coffee-status
+  template:
+    metadata:
+      name: msa-service-coffee-status
+      labels:
+        app: coffee-status
+    spec:
+      containers:
+      - name: msa-service-coffee-status
+        image: ghdalswl77/msa-service-coffee-status:1.0
+        env:
+        - name: EUREKA_SERVER_IP
+          value: svc-eureka-server
+        - name: KAFKA_SERVER_IP
+          value: 192.168.1.103
+        - name: KAFKA_SERVER_PORT
+          value: "31090"

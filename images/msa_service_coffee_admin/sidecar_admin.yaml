@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sidecar-admin
+spec:
+  containers:      
+  - name: admin-server
+    image: ghdalswl77/msa-service-coffee-admin:1.0
+    env:
+    - name: EUREKA_SERVER_IP
+      value: svc-eureka-server
+    volumeMounts:
+    - mountPath: /usr/local/tomcat/webapps/admin
+      name: admin-vol
+      
+  - name: admin-puller
+    image: ghdalswl77/msa-service-coffee-admin-puller
+    env:
+    - name: CONTENTS_SOURCE_URL
+      value: "https://github.com/minjipi/web-front-admin"
+    volumeMounts:
+    - mountPath: /data
+      name: admin-vol
+      
+  volumes:           
+  - name: admin-vol
+    emptyDir: {}

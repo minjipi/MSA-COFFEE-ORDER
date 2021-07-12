@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-coffee-member
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coffee-member
+  template:
+    metadata:
+      name: msa-service-coffee-member
+      labels:
+        app: coffee-member
+    spec:
+      containers:
+      - name: msa-service-coffee-member
+        image: ghdalswl77/msa-service-coffee-member:1.0
+        env:
+        - name: EUREKA_SERVER_IP
+          value: svc-eureka-server

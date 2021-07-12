@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-eureka-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eureka-server
+  template:
+    metadata:
+      name: spring-cloud-eureka-server
+      labels:
+        app: eureka-server
+    spec:
+      containers:
+      - name: spring-cloud-eureka-server
+        image: ghdalswl77/spring-cloud-eureka-server:1.0
+        env:
+        - name: CONFIG_SERVER_IP
+          value: svc-config-server
+        - name: EUREKA_SERVER_IP
+          value: svc-eureka-server

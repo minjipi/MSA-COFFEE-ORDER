@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-coffee-order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coffee-order
+  template:
+    metadata:
+      name: msa-service-coffee-order
+      labels:
+        app: coffee-order
+    spec:
+      containers:
+      - name: msa-service-coffee-order
+        image: ghdalswl77/msa-service-coffee-order:1.0
+        env:
+        - name: EUREKA_SERVER_IP
+          value: svc-eureka-server
+        - name: KAFKA_SERVER_IP
+          value: 192.168.1.103
+        - name: KAFKA_SERVER_PORT
+          value: "31090"

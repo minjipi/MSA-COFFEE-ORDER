@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-turbine-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: turbine-server
+  template:
+    metadata:
+      name: spring-cloud-turbine-server
+      labels:
+        app: turbine-server
+    spec:
+      containers:
+      - name: spring-cloud-turbine-server
+        image: ghdalswl77/spring-cloud-turbine-server:1.0
+        env:
+        - name: CONFIG_SERVER_IP
+          value: svc-config-server
+        - name: EUREKA_SERVER_IP
+          value: svc-eureka-server

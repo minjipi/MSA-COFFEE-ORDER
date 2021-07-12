@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-hystrix-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hystrix-dashboard
+  template:
+    metadata:
+      name: spring-cloud-hystrix-dashboard
+      labels:
+        app: hystrix-dashboard
+    spec:
+      containers:
+      - name: spring-cloud-hystrix-dashboard
+        image: ghdalswl77/spring-cloud-hystrix-dashboard:1.0
+        env:
+        - name: CONFIG_SERVER_IP
+          value: svc-config-server
+        - name: EUREKA_SERVER_IP
+          value: svc-eureka-server

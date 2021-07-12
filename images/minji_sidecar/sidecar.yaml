@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sidecar
+spec:
+  containers:      
+  - name: front-server
+    image: nginx
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html
+      name: contents-vol
+      
+  - name: puller
+    image: ghdalswl77/coffee-front-puller:1.0
+    env:
+    - name: CONTENTS_SOURCE_URL
+      value: "https://github.com/minjipi/web-front"
+    volumeMounts:
+    - mountPath: /data
+      name: contents-vol
+      
+  volumes:           
+  - name: contents-vol
+    emptyDir: {}
