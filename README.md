@@ -24,7 +24,6 @@ MSA 프로젝트, 커피 주문 시스템 ☕️
 ## 사용 기술
 + Kubernetes
 + Docker
-<br />
 <hr />
 
 ## 프로젝트 전체 구성
@@ -39,5 +38,17 @@ MSA 프로젝트, 커피 주문 시스템 ☕️
 쿠버네티스 클러스터의 IP로 접속하게 되고, 쿠버네티스 클러스터에서는 8080:8080 포트포워딩을 이용해 sidecar-admin 파드에 연결되도록 설정하였습니다.<br />
 그리고 고객(client)은 http://www.minzy-pansy.kro.kr/client 도메인으로 접속하면 쿠버네티스 클러스터의 IP로 접속하게 되고 <br />
 쿠버네티스 클러스터에서는 80:8080 포트포워딩을 이용해 sidecar-client 파드에 연결되도록 설정하였습니다.<br />
+
 > 현재 비용 문제로 사이트 운영 중단된 상태입니다.
+
 <br />
+
+<img width="760" alt="msa01" src="https://user-images.githubusercontent.com/68539040/173880429-932e1d36-144e-4ce6-af58-84f6459cf2a4.png">
+프론트에 접속한 관리자, 고객은 Ajax를 이용해 Zuul 서버로 API를 호출하게 됩니다. 호출 가능한 API는 다음 표와 같습니다.
+<br />
+
+<img width="760" alt="msa03" src="https://user-images.githubusercontent.com/68539040/173880896-b845fd13-ab4b-4d23-8dde-a5b2383e6bd6.png">
+
+관리자, 고객이 특정 API를 호출하게 되면 Zuul 서버는 Eureka서버에서 API에 해당하는 serviceId를 찾게됩니다.<br />
+Eureka 서버에는 각 서비스들이 serviceId와 함께 해당 서비스가 동작하고 있는 서버의 IP주소가 등록되어 있으며<br />
+Zuul 서버는 이 ip주소들로 라우팅해주어 각각의 서비스들이 동작하게됩니다.<br />
