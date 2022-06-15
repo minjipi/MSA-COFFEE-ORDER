@@ -55,7 +55,7 @@ Eureka 서버에는 각 서비스들이 serviceId와 함께 해당 서비스가 
 Zuul 서버는 이 ip주소들로 라우팅해주어 각각의 서비스들이 동작하게됩니다.<br />
 
 
-관리자 페이지
+### 관리자 페이지
 <br />
 
 <img width="918" alt="msa04" src="https://user-images.githubusercontent.com/68539040/173881339-3c80725a-a9c5-4225-9efa-23073cbc8aa8.png">
