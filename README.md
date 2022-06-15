@@ -29,9 +29,15 @@ MSA 프로젝트, 커피 주문 시스템 ☕️
 
 ## 프로젝트 전체 구성
 <img width="760" alt="msa00" src="https://user-images.githubusercontent.com/68539040/173878465-f58e8db6-4239-4142-94ef-0bf088dca791.png">
-전체 구성도는 위와 같으며, 주요 서비스들은 쿠버네티스 환경에서 각각의 파드들로 동작하고 있고 
+<br />
+전체 구성도는 위와 같으며, 주요 서비스들은 쿠버네티스 환경에서 각각의 파드들로 동작하고 있고 <br />
 서비스 운영 환경과 서비스 개발 환경 총 2개로 구분할 수 있습니다.
+<br />
 
 <img width="700" alt="msa02" src="https://user-images.githubusercontent.com/68539040/173879867-761f06c8-e4a7-4996-b69c-96ecfd309ca8.png">
-카페 점원(admin)이 http://www.minzy-pansy.kro.kr:8080/admin 도메인으로 접속하면, 쿠버네티스 클러스터의 IP로 접속하게 되고, 쿠버네티스 클러스터에서는 8080:8080 포트포워딩을 이용해 sidecar-admin 파드에 연결되도록 설정하였습니다. 그리고 고객(client)은 http://www.minzy-pansy.kro.kr/client 도메인으로 접속하면 쿠버네티스 클러스터의 IP로 접속하게 되고 쿠버네티스 클러스터에서는 80:8080 포트포워딩을 이용해 sidecar-client 파드에 연결되도록 설정하였습니다.
+카페 점원(admin)이 http://www.minzy-pansy.kro.kr:8080/admin 도메인으로 접속하면, <br />
+쿠버네티스 클러스터의 IP로 접속하게 되고, 쿠버네티스 클러스터에서는 8080:8080 포트포워딩을 이용해 sidecar-admin 파드에 연결되도록 설정하였습니다.<br />
+그리고 고객(client)은 http://www.minzy-pansy.kro.kr/client 도메인으로 접속하면 쿠버네티스 클러스터의 IP로 접속하게 되고 <br />
+쿠버네티스 클러스터에서는 80:8080 포트포워딩을 이용해 sidecar-client 파드에 연결되도록 설정하였습니다.<br />
 > 현재 비용 문제로 사이트 운영 중단된 상태입니다.
+<br />
