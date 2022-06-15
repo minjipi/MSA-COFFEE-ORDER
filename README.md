@@ -29,3 +29,4 @@ MSA 프로젝트, 커피 주문 시스템 ☕️
 
 ## 프로젝트 전체 구성
 ![vnilla_ERD](https://user-images.githubusercontent.com/68539040/173878465-f58e8db6-4239-4142-94ef-0bf088dca791.png)
+<img width="762" alt="msa00" src="https://user-images.githubusercontent.com/68539040/173878465-f58e8db6-4239-4142-94ef-0bf088dca791.png">
