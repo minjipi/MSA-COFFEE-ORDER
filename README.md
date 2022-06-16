@@ -44,12 +44,11 @@ MSA 프로젝트, 커피 주문 시스템 ☕️
 
 <br />
 
-<img width="760" alt="msa01" src="https://user-images.githubusercontent.com/68539040/173880429-932e1d36-144e-4ce6-af58-84f6459cf2a4.png">
+<img width="760" alt="msa01" src="https://user-images.githubusercontent.com/68539040/173880429-932e1d36-144e-4ce6-af58-84f6459cf2a4.png"> <br />
 프론트에 접속한 관리자, 고객은 Ajax를 이용해 Zuul 서버로 API를 호출하게 됩니다. 호출 가능한 API는 다음 표와 같습니다.
 <br />
 <br />
-<img width="760" alt="msa03" src="https://user-images.githubusercontent.com/68539040/173880896-b845fd13-ab4b-4d23-8dde-a5b2383e6bd6.png">
-
+<img width="760" alt="msa03" src="https://user-images.githubusercontent.com/68539040/173880896-b845fd13-ab4b-4d23-8dde-a5b2383e6bd6.png"> <br />
 관리자, 고객이 특정 API를 호출하게 되면 Zuul 서버는 Eureka서버에서 API에 해당하는 serviceId를 찾게됩니다.<br />
 Eureka 서버에는 각 서비스들이 serviceId와 함께 해당 서비스가 동작하고 있는 서버의 IP주소가 등록되어 있으며<br />
 Zuul 서버는 이 ip주소들로 라우팅해주어 각각의 서비스들이 동작하게됩니다.<br /><hr />
@@ -62,31 +61,25 @@ Zuul 서버는 이 ip주소들로 라우팅해주어 각각의 서비스들이 �
 <br />
 <img width="760" alt="msa04" src="https://user-images.githubusercontent.com/68539040/173881339-3c80725a-a9c5-4225-9efa-23073cbc8aa8.png"> <br />
 동작 방식의 구조는 다음과 같습니다. <br />
-<img width="760" alt="msa05" src="https://user-images.githubusercontent.com/68539040/173970409-b6a07c3d-8ddc-46a3-8972-65606e1ab4a2.png">
-<br />
+<img width="760" alt="msa05" src="https://user-images.githubusercontent.com/68539040/173970409-b6a07c3d-8ddc-46a3-8972-65606e1ab4a2.png"> <br />
 관리자가 페이지에 접속하고 Ajax를 이용하여 GET 메소드로 status api를 3초마다 요청을 보내 주문 내역을 계속 확인하다가.. <br />
 완료 버튼을 누르면, <br />
 
-<img width="760" alt="msa06" src="https://user-images.githubusercontent.com/68539040/173970559-8a89e082-7573-4260-9676-c67161bf320c.png">
-<br />
+<img width="760" alt="msa06" src="https://user-images.githubusercontent.com/68539040/173970559-8a89e082-7573-4260-9676-c67161bf320c.png"> <br />
 PUT 메소드로 status api에 다음과 같은 json 데이터를 보내고 <br />
 이 때, statusName이 ORDERED에서 DONE으로 바뀌게 되는 것 입니다.
 <br /> <hr />
 
 ### 📍 회원 페이지 접속 화면
 <br />
-<img width="760" alt="msa07" src="https://user-images.githubusercontent.com/68539040/173970653-c022ab00-eb27-48ae-b1b8-3e0b1152ac06.png">
+<img width="760" alt="msa07" src="https://user-images.githubusercontent.com/68539040/173970653-c022ab00-eb27-48ae-b1b8-3e0b1152ac06.png"> <br />
 주문자는 웹브라우저를 통해 커피 주문 내역을 입력합니다. <br />
 주문 번호는 시스템에서 자동으로 부여하고, 상단 빈칸에 회원명 입력, 메뉴 아이콘을 통해 커피 종류, 커피 개수를 입력하여 주문 버튼을 눌러 주문합니다.
 <br />
 
-동작 방식은 다음과 같습니다.
-<br />
-<br />
-<img width="760" alt="msa08" src="https://user-images.githubusercontent.com/68539040/174035965-df219a0e-dd88-489b-9ef7-9238a1991774.png">
-<br />
-고객이 고객 페이지에 접속 후, 메뉴를 고른 고객이 주문하기 버튼을 누르게 되면
-<br />
+동작 방식은 다음과 같습니다. <br /> <br />
+<img width="760" alt="msa08" src="https://user-images.githubusercontent.com/68539040/174035965-df219a0e-dd88-489b-9ef7-9238a1991774.png"> <br />
+고객이 고객 페이지에 접속 후, 메뉴를 고른 고객이 주문하기 버튼을 누르게 되면 <br />
 Ajax를 이용해 POST 메소드로 order api에 다음과 같은 데이터를 전송하고
 ```
 {
@@ -99,19 +92,16 @@ Ajax를 이용해 POST 메소드로 order api에 다음과 같은 데이�
 Ajax를 이용해 GET 메소드로 status api를 3초마다 호출해서 내 주문 내역을 확인합니다. <br />
 
 
-주문 데이터를 전달 받은 Order 서비스는 회원의 이름을 이용해서 회원 확인 후 주문을 접수합니다.
+주문 데이터를 전달 받은 Order 서비스는 회원의 이름을 이용해서 회원 확인 후 주문을 접수합니다. <br />
 <img width="760" alt="im09" src="https://user-images.githubusercontent.com/68539040/174041667-08552d58-01d3-457a-8900-0642d2568ddc.png"> <br />
 주문이 접수될 때 큐잉 시스템(Kafka)을 통해 주문 정보를 발행하고 큐잉 시스템으로부터 Status 서비스는 메시지를 구독하는 구조 입니다. <br />
 그래서 메시지를 전달 받은 Status 서비스는 전달받은 내용으로 주문 상태를 다음과 같이 추가합니다. <br /><hr />
 
 ### 📍 프로젝트 개발 환경
-사용자가 이용하는 프론트엔드는 사이드카 패턴으로 구성되어있습니다.
-<br />
-<img width="760" alt="im10" src="https://user-images.githubusercontent.com/68539040/174119488-38b698eb-f877-4c38-b062-97a9d64f0c34.png">
-
-사용자가 접속하는 웹 서버와 Git에서 코드를 받아오는 puller 서버가 같은 볼륨을 공유하고 있으며, 개발자가 개발도구에서 개발, 변경한 코드를 Git으로 올리면
-<img width="760" alt="im11" src="https://user-images.githubusercontent.com/68539040/174044756-93bc5c09-6846-4afa-bde3-e4d5ce2d0352.png">
-
+사용자가 이용하는 프론트엔드는 사이드카 패턴으로 구성되어있습니다. <br />
+<img width="760" alt="im10" src="https://user-images.githubusercontent.com/68539040/174119488-38b698eb-f877-4c38-b062-97a9d64f0c34.png"> <br />
+사용자가 접속하는 웹 서버와 Git에서 코드를 받아오는 puller 서버가 같은 볼륨을 공유하고 있으며, 개발자가 개발도구에서 개발, 변경한 코드를 Git으로 올리면 <br />
+<img width="760" alt="im11" src="https://user-images.githubusercontent.com/68539040/174044756-93bc5c09-6846-4afa-bde3-e4d5ce2d0352.png"> <br />
 자동으로 puller가 해당 코드를 Git에서 받아와 볼륨에 저장하고, 저장된 코드는 웹 서버에 공유 되어있기 때문에 서비스에 바로 적용이 가능합니다.  <br /><hr />
 
 ### 결론
@@ -127,18 +117,17 @@ Ajax를 이용해 GET 메소드로 status api를 3초마다 호출해서 �
 
 그리고 클라우드환경과의 궁합이 좋습니다. Monolithic구조는 각각의 모듈들이 합쳐져 큰덩어리로 시스템이 구축되어 있습니다. <br />
 사용량이 적은 모듈을 삭제한다고 하더라도 전체 시스템의 스펙은 변하지 않기 때문에, 사용량단위로 과금을 해야하는 클라우드 환경에서는 비효율적입니다. <br />
-<img width="600" alt="스크린샷 2022-06-16 오후 7 12 12" src="https://user-images.githubusercontent.com/68539040/174119939-db09f94a-c6a9-4f26-bfd0-f5e16c69dd02.png">
-
+<img width="600" alt="스크린샷 2022-06-16 오후 7 12 12" src="https://user-images.githubusercontent.com/68539040/174119939-db09f94a-c6a9-4f26-bfd0-f5e16c69dd02.png"> <br />
 
 하지만 MSA 구조는 서비스단위로 기능을 분리해서 구축할 수 있기 때문에 <br />
-사용하지 않는 기능 또는 사용량이 적은 기능을 축소해서 효율화시킬 수 있다는 장점이 있습니다. <br />
+사용하지 않는 기능 또는 사용량이 적은 기능을 축소해서 효율화시킬 수 있다는 장점이 있습니다. <br /> <hr />
 
 ### 🤔 But..
 프로젝트를 진행하며 가장 큰 문제점이었던 점은 테스팅이었습니다. <br />
 마이크로 서비스는 서비스들이 각각 분리가 되어 있고 다른 서비스에 대한 종속성을 가지고 있기 때문에 <br />
 특정 사용자 시나리오 혹은 기능을 테스트 할 경우 여러 서비스에 걸쳐 테스트를 진행해야 합니다.  <br />
-그래서 테스트 환경 구축이나 문제 발생 시 분리된 여러 시스템을 동시에 해결해야 하므로 테스팅의 복잡도가 올라갑니다.  <br />
-<img width="760" alt="스크린샷 2022-06-16 오후 7 13 10" src="https://user-images.githubusercontent.com/68539040/174119866-39fd9e08-c2ac-4367-a93b-ab461b6fca5c.png">  <br />
+그래서 테스트 환경 구축이나 문제 발생 시 분리된 여러 시스템을 동시에 해결해야 하므로 테스팅의 복잡도가 올라갑니다. <br />
+<img width="760" alt="스크린샷 2022-06-16 오후 7 13 10" src="https://user-images.githubusercontent.com/68539040/174119866-39fd9e08-c2ac-4367-a93b-ab461b6fca5c.png"> <br />
 또 운영 관점에서는 서비스 별로 다른 기술을 사용할 수 있으며, 시스템이 서비스 단위로 잘게 나누어 지기 때문에  <br />
 운영 대상 시스템 수가 늘어나고 이에 따라 필요 기술의 수도 늘어나게 된다는 문제점도 있습니다.  <br />
 
@@ -152,7 +141,7 @@ Ajax를 이용해 GET 메소드로 status api를 3초마다 호출해서 �
 프로젝트 초기에 스프링 클라우드 히스트릭스를 이용하여 모니터링 시스템도 구현해보려 했지만 <br />
 해당 버전에 호환되는 스프링 클라우드 버전에서 히스트릭스가 deprecated 되어 더 이상 제공되지 않았습니다. <br />
 이는 차후 프로메테우스와 같은 오픈소스 모니터링 시스템을 적용해 문제를 해결할 계획이고 <br />
-
+<img width="660" alt="스크린샷 2022-06-16 오후 7 15 51" src="https://user-images.githubusercontent.com/68539040/174121008-4e46f185-d48c-4545-b5c4-16477a85b15f.png"> <br />
 또 현재 프로젝트에서는 간단한 사용자 관리, 커피 주문과 상태에 대한 기능만 구현했지만 <br />
 향후 기존의 실제 카페 시스템 처럼 마일리지, 추천 서비스 등 다양한 기능도 추가할 계획입니다. <br />
 이러한 기능을 추가하기 위해서는 프로젝트의 DB도, 휘발성을 가지고 있는 인메모리 DB가 아닌 Mysql과 Oracle과 같은 DB로 바꿔줘야겠습니다. <br />
@@ -161,5 +150,5 @@ Ajax를 이용해 GET 메소드로 status api를 3초마다 호출해서 �
 본 프로젝트에서는 특정 서비스의 장애 상황에 대해서만 다뤄보았는데, 특정 서비스에 트래픽이 몰리는 상황에 대한 오토스케일링 처리나 <br />
 특정 사용자 그룹이 서비스의 특정 버전으로 유입되도록 하는 시나리오 등을 테스트 해보면 좀 더 MSA에 대한 이해도가 높아질 것이라 생각됩니다.!!
 
-<br /><hr />
+<br /><br />
 
