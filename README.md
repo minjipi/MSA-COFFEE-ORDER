@@ -34,7 +34,7 @@ MSA 프로젝트, 커피 주문 시스템 ☕️
 <br />
 <br />
 
-> 현재 비용 문제로 도메인 사이트 운영 중단된 상태입니다.
+> 현재 비용 문제로 도메인 사이트 운영 중단된 상태입니다. <br />
 
 <img width="700" alt="msa02" src="https://user-images.githubusercontent.com/68539040/173879867-761f06c8-e4a7-4996-b69c-96ecfd309ca8.png">
 카페 점원(admin)이 http://www.minzy-pansy.kro.kr:8080/admin 도메인으로 접속하면, <br />
@@ -58,9 +58,34 @@ Zuul 서버는 이 ip주소들로 라우팅해주어 각각의 서비스들이 �
 ### 관리자 페이지
 <br />
 
-<img width="918" alt="msa04" src="https://user-images.githubusercontent.com/68539040/173881339-3c80725a-a9c5-4225-9efa-23073cbc8aa8.png">
+<img width="760" alt="msa04" src="https://user-images.githubusercontent.com/68539040/173881339-3c80725a-a9c5-4225-9efa-23073cbc8aa8.png">
 
 <br />
 관리자 페이지의 동작 방식 입니다.<br />
 관리자가 페이지에 접속하면 고객이 주문한 주문이 화면에 표시되고,<br />
 해당 주문의 완료 버튼을 누르면 고객의 화면의 주문내역의 상태가 완료로 변경됩니다.<br />
+
+<img width="760" alt="msa05" src="https://user-images.githubusercontent.com/68539040/173970409-b6a07c3d-8ddc-46a3-8972-65606e1ab4a2.png">
+<br />
+동작 방식의 구조는 위와 같습니다. 관리자가 페이지에 접속하면,<br />
+Ajax를 이용하여 GET 메소드로 status api를 3초마다 요청을 보내서 주문 내역을 계속 확인하다가 <br />
+완료 버튼을 누르면 <br />
+
+<img width="760" alt="msa06" src="https://user-images.githubusercontent.com/68539040/173970559-8a89e082-7573-4260-9676-c67161bf320c.png">
+<br />
+PUT 메소드로 status api에 다음과 같은 json 데이터를 보내고 <br />
+이 때, statusName이 ORDERED에서 DONE으로 바뀌게 되는 것 입니다.
+<br />
+
+### 회원 페이지 접속 화면
+<br />
+<img width="760" alt="msa07" src="https://user-images.githubusercontent.com/68539040/173970653-c022ab00-eb27-48ae-b1b8-3e0b1152ac06.png">
+
+<br />
+주문자 페이지를 보겠습니다. 주문자는 웹브라우저를 통해 커피 주문 내역을 입력합니다. <br />
+주문 번호는 시스템에서 자동으로 부여하고, 상단 빈칸에 회원명 입력, 메뉴 아이콘을 통해 커피 종류, 커피 개수를 입력하여 주문 버튼을 눌러 주문합니다.
+<br />
+
+
+
+
