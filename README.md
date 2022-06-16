@@ -92,14 +92,14 @@ PUT 메소드로 status api에 다음과 같은 json 데이터를 보내
 고객이 고객 페이지에 접속 후, 메뉴를 고른 고객이 주문하기 버튼을 누르게 되면
 <br />
 Ajax를 이용해 POST 메소드로 order api에 다음과 같은 데이터를 전송하고
-₩₩₩
+```
 {
 "_id" : "[주문 ID]",
 "orderName" : "[메뉴]",
 "userId" : "[고객 ID]",
 "userName" : "[고객 이름]"
 }
-₩₩₩
+```
 Ajax를 이용해 GET 메소드로 status api를 3초마다 호출해서 내 주문 내역을 확인합니다.
 
 <br />
